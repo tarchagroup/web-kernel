@@ -9,7 +9,7 @@ class AbstractFilter
     public function __construct(FilterFactory $factory)
     {
         $this->factory = $factory;
-        $this->filter = $factory->newInstance();
+        $this->filter = $factory->newFilter();
     }
     
     public function addId($field)
@@ -77,7 +77,7 @@ class AbstractFilter
     
     public function newFilter()
     {
-        $this->filter = $this->factory->newInstance();
+        $this->filter = $this->factory->newFilter();
         return $this->filter;
     }
 }
