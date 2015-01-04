@@ -59,9 +59,9 @@ class WebKernel
     *
     */
     public function __construct(
-    WebKernelRouter $router,
-    WebKernelDispatcher $dispatcher,
-    ResponseSender $response_sender
+        WebKernelRouter $router,
+        WebKernelDispatcher $dispatcher,
+        ResponseSender $response_sender
     ) {
         $this->router = $router;
         $this->dispatcher = $dispatcher;
