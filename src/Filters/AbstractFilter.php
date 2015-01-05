@@ -80,4 +80,9 @@ class AbstractFilter
         $this->filter = $this->factory->newFilter();
         return $this->filter;
     }
+    
+    public function messages()
+    {
+        return $this->filter->getMessages();
+    }
 }
