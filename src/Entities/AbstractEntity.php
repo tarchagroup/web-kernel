@@ -56,12 +56,11 @@ abstract class Abstractentity implements JsonSerializable
     }
 
     /**
-     * setter to access private paroperties
+     * setter to access private properties
      */
     public function __set($key, $val)
     {
-
-        if ($this->protectedPropertyExists($this, $key) && $this->$key != $val) {
+        if ($this->protectedPropertyExists($this, $key) && $this->$key !== $val) {
             $this->$key = $val;
             $this->isDirty = true;
         }
@@ -95,11 +94,10 @@ abstract class Abstractentity implements JsonSerializable
     private function protectedPropertyExists($obj, $key)
     {
         $reflection = new ReflectionClass($obj);
-
         if (!$reflection->hasProperty($key)) {
             return false;
         }
-
+        
         return $reflection->getProperty($key)->isProtected();
     }
 }
