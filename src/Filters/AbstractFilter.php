@@ -57,6 +57,14 @@ class AbstractFilter
             ->asSoftRule();
     }
     
+    public function addUuid($field)
+    {
+        $this->filter
+            ->validate($field)
+            ->is('uuid')
+            ->asSoftRule();
+    }
+    
     public function addTime($field)
     {
         $this->filter
