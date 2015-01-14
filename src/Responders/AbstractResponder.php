@@ -22,8 +22,9 @@ abstract class AbstractResponder extends AuraAbstractResponder
         'Tarcha\WebKernel\Payloads\NotFound'      => 'notFound',
         'Tarcha\WebKernel\Payloads\NotRecognized' => 'notRecognized',
         'Tarcha\WebKernel\Payloads\Success'       => 'success',
-        'Tarcha\WebKernel\Payloads\AlreadExists'  => 'alreadyExists',
-        'Tarcha\WebKernel\Payloads\Invalid'       => 'noContent'
+        'Tarcha\WebKernel\Payloads\AlreadyExists' => 'alreadyExists',
+        'Tarcha\WebKernel\Payloads\Invalid'       => 'noContent',
+        'Tarcha\WebKernel\Payloads\Created'       => 'created'
     ];
 
 
@@ -79,6 +80,13 @@ abstract class AbstractResponder extends AuraAbstractResponder
     {
         $e = $this->payload->get('exception');
         $this->response->status->set('500');
+        $this->response->content->set($e->getMessage());
+    }
+    
+    protected function invalid()
+    {
+        $e = $this->payload->get('message');
+        $this->response->status->set('400');
         $this->response->content->set($e->getMessage());
     }
 
