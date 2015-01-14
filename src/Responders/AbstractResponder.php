@@ -109,15 +109,13 @@ abstract class AbstractResponder extends AuraAbstractResponder
 
     protected function created()
     {
-        $data = $this->payload->get();
         $this->response->status->set('201');
-        $this->response->content->set($data);
         return $this->response;
     }
 
     protected function alreadyExists()
     {
-        $data = $this->payload->get('exception');
+        $e = $this->payload->get('exception');
         $this->response->status->set('422');
         $this->response->content->set($e->getMessage());
         return $this->response;
