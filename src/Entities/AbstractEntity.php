@@ -5,7 +5,7 @@ namespace Tarcha\WebKernel\Entities;
 use \JsonSerializable;
 use \ReflectionClass;
 
-abstract class Abstractentity implements JsonSerializable
+abstract class AbstractEntity implements JsonSerializable
 {
     /**
      * Remember if any properties have been changed

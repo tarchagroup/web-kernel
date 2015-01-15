@@ -17,12 +17,14 @@ abstract class AbstractResponder extends AuraAbstractResponder
     protected $payload_methods = [];
 
     private $kernel_payload_methods = [
-        'Tarcha\WebKernel\Payload\NoContent'     => 'noContent',
-        'Tarcha\WebKernel\Payload\Error'         => 'error',
-        'Tarcha\WebKernel\Payload\NotFound'      => 'notFound',
-        'Tarcha\WebKernel\Payload\NotRecognized' => 'notRecognized',
-        'Tarcha\WebKernel\Payload\Success'       => 'success',
-        'Tarcha\WebKernel\Payload\AlreadExists'  => 'alreadyExists'
+        'Tarcha\WebKernel\Payloads\NoContent'     => 'noContent',
+        'Tarcha\WebKernel\Payloads\Error'         => 'error',
+        'Tarcha\WebKernel\Payloads\NotFound'      => 'notFound',
+        'Tarcha\WebKernel\Payloads\NotRecognized' => 'notRecognized',
+        'Tarcha\WebKernel\Payloads\Success'       => 'success',
+        'Tarcha\WebKernel\Payloads\AlreadyExists' => 'alreadyExists',
+        'Tarcha\WebKernel\Payloads\Invalid'       => 'noContent',
+        'Tarcha\WebKernel\Payloads\Created'       => 'created'
     ];
 
 
@@ -43,8 +45,8 @@ abstract class AbstractResponder extends AuraAbstractResponder
     public function __invoke()
     {
         $class = get_class($this->payload);
-        $method = isset($this->payload_method[$class])
-                ? $this->payload_method[$class]
+        $method = isset($this->payload_methods[$class])
+                ? $this->payload_methods[$class]
                 : 'notRecognized';
         $this->$method();
         return $this->response;
@@ -80,6 +82,13 @@ abstract class AbstractResponder extends AuraAbstractResponder
         $this->response->status->set('500');
         $this->response->content->set($e->getMessage());
     }
+    
+    protected function invalid()
+    {
+        $e = $this->payload->get('message');
+        $this->response->status->set('400');
+        $this->response->content->set($e->getMessage());
+    }
 
     // demograph
     protected function json()
@@ -100,15 +109,13 @@ abstract class AbstractResponder extends AuraAbstractResponder
 
     protected function created()
     {
-        $data = $this->payload->get();
         $this->response->status->set('201');
-        $this->response->content->set($data);
         return $this->response;
     }
 
     protected function alreadyExists()
     {
-        $data = $this->payload->get('exception');
+        $e = $this->payload->get('exception');
         $this->response->status->set('422');
         $this->response->content->set($e->getMessage());
         return $this->response;

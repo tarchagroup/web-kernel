@@ -111,7 +111,7 @@ class AbstractFilterTest extends Test
     
     public function testUuid()
     {
-        $f = '12345678-90ab-cdef-1234-567890123456';
+        $f = '1234567890abcdef1234567890123456';
         $this->filter->addUuid('f');
         $val = $this->filter->validate(['f' => $f]);
         $this->assertTrue($val);

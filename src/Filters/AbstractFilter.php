@@ -61,7 +61,7 @@ class AbstractFilter
     {
         $this->filter
             ->validate($field)
-            ->is('uuid')
+            ->is('uuidHexonly')
             ->asSoftRule();
     }
     
