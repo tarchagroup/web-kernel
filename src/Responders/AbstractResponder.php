@@ -23,7 +23,7 @@ abstract class AbstractResponder extends AuraAbstractResponder
         'Tarcha\WebKernel\Payloads\NotRecognized' => 'notRecognized',
         'Tarcha\WebKernel\Payloads\Success'       => 'success',
         'Tarcha\WebKernel\Payloads\AlreadyExists' => 'alreadyExists',
-        'Tarcha\WebKernel\Payloads\Invalid'       => 'noContent',
+        'Tarcha\WebKernel\Payloads\Invalid'       => 'invalid',
         'Tarcha\WebKernel\Payloads\Created'       => 'created'
     ];
 
@@ -85,9 +85,9 @@ abstract class AbstractResponder extends AuraAbstractResponder
     
     protected function invalid()
     {
-        $e = $this->payload->get('message');
+        $msg = $this->payload->get('message');
         $this->response->status->set('400');
-        $this->response->content->set($e->getMessage());
+        $this->response->content->set($msg);
     }
 
     // demograph
