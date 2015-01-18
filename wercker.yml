@@ -7,6 +7,8 @@ build:
             echo "php version $(php --version) running"
             echo "from location $(which php)"
             composer --version
+      - add-ssh-key:
+          keyname: TARCHABOT_KEY
       - script:
           name: install composer dependencies
           code: >
