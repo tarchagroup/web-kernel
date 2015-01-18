@@ -1,6 +1,7 @@
 {
     "name": "web-kernel",
     "type": "library",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
         "aura/project-kernel": "~2.0",
@@ -13,8 +14,15 @@
     "require-dev": {
         "squizlabs/php_codesniffer": "1.*",
         "seld/jsonlint": "dev-master",
-        "jakub-onderka/php-parallel-lint": "0.*"
+        "jakub-onderka/php-parallel-lint": "0.*",
+        "swaggerdocs": "dev-master"
     },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:tarchagroup/swaggerdocs.git"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Tarcha\\WebKernel\\_Config\\": "config/",
