@@ -87,7 +87,8 @@ abstract class AbstractResponder extends AuraAbstractResponder
     {
         $msg = $this->payload->get('message');
         $this->response->status->set('400');
-        $this->response->content->set($msg);
+        $this->response->content->set(json_encode($msg));
+        $this->response->content->setType('application/json');
     }
 
     // demograph
