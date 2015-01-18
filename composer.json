@@ -9,13 +9,13 @@
         "aura/dispatcher": "~2.0",
         "aura/router": "~2.0",
         "aura/web": "~2.0",
-        "aura/filter": "~2.0@dev"
+        "aura/filter": "~2.0@dev",
+        "swaggerdocs": "dev-master"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "1.*",
         "seld/jsonlint": "dev-master",
-        "jakub-onderka/php-parallel-lint": "0.*",
-        "swaggerdocs": "dev-master"
+        "jakub-onderka/php-parallel-lint": "0.*"
     },
     "repositories": [
         {
