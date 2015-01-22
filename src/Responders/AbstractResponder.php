@@ -33,6 +33,7 @@ abstract class AbstractResponder extends AuraAbstractResponder
     ) {
         $this->response = $response;
         $this->init();
+        $this->setAccessControll();
     }
 
     protected function init()
@@ -82,7 +83,7 @@ abstract class AbstractResponder extends AuraAbstractResponder
         $this->response->status->set('500');
         $this->response->content->set($e->getMessage());
     }
-    
+
     protected function invalid()
     {
         $msg = $this->payload->get('message');
@@ -120,5 +121,27 @@ abstract class AbstractResponder extends AuraAbstractResponder
         $this->response->status->set('422');
         $this->response->content->set($e->getMessage());
         return $this->response;
+    }
+
+    protected function setAccessControll()
+    {
+        $headers = $this->response->headers;
+        $headers->set(
+            'Access-Control-Allow-Origin',
+            '*.sportsindex.co'
+        );
+        $headers->set(
+            'Access-Control-Allow-Credentials',
+            'true'
+        );
+        $headers->set(
+            'Access-Control-Allow-Headers',
+            'Origin, X-Requested-With, Content-Type, Accept'
+        );
+        $headers->set(
+            'Access-Control-Allow-Methods',
+            'GET, POST, PUT, DELETE, HEAD, OPTIONS'
+        );
+
     }
 }
