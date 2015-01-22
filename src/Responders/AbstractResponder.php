@@ -95,6 +95,9 @@ abstract class AbstractResponder extends AuraAbstractResponder
     protected function json()
     {
         $data = $this->payload->get();
+        if (is_array($data)) {
+            $data = array_values($data);
+        }
         $this->response->status->set('200');
         $this->response->content->set(json_encode($data));
         $this->response->content->setType('application/json');
