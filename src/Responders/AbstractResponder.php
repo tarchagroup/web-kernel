@@ -128,7 +128,7 @@ abstract class AbstractResponder extends AuraAbstractResponder
         $headers = $this->response->headers;
         $headers->set(
             'Access-Control-Allow-Origin',
-            '*.sportsindex.co'
+            '*'
         );
         $headers->set(
             'Access-Control-Allow-Credentials',
