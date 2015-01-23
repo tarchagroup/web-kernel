@@ -37,7 +37,7 @@ class AbstractFilter
     {
         $this->filter
             ->validate($field)
-            ->is('alpha')
+            ->is('string')
             ->asSoftRule();
     }
     
