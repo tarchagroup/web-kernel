@@ -47,7 +47,7 @@ class AbstractFilterTest extends Test
     
     public function testStringNotValid()
     {
-        $name = 1234;
+        $name = [1234];
         $this->filter->addString('name');
         $val = $this->filter->validate(['name' => $name]);
         $this->assertFalse($val);
