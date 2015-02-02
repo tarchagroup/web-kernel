@@ -93,13 +93,13 @@ abstract class AbstractResponder extends AuraAbstractResponder
     }
 
     // demograph
-    protected function json($code = 200)
+    protected function json()
     {
         $data = $this->payload->get();
         if (is_array($data)) {
             $data = array_values($data);
         }
-        $this->response->status->set($code);
+        $this->response->status->set('200');
         $this->response->content->set(json_encode($data));
         $this->response->content->setType('application/json');
         return $this->response;
@@ -107,7 +107,9 @@ abstract class AbstractResponder extends AuraAbstractResponder
 
     protected function success()
     {
-        return $this->json(201);
+        $this->response->status->set('200');
+        $this->response->content->set('success');
+        return $this->response;
     }
 
     protected function created()
