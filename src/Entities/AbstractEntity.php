@@ -4,6 +4,7 @@ namespace Tarcha\WebKernel\Entities;
 
 use \JsonSerializable;
 use \ReflectionClass;
+use Slug\Slugifier;
 
 abstract class AbstractEntity implements JsonSerializable
 {
@@ -11,12 +12,15 @@ abstract class AbstractEntity implements JsonSerializable
      * Remember if any properties have been changed
      */
     private $isDirty = false;
+    private $slugifier;
+    protected $slug;
 
     /**
      * Construct
      */
-    public function __construct($data = [])
+    public function __construct($data = [], Slugifier $slugifier)
     {
+        $this->slugifier = $slugifier;
         $this->setData($data);
         $this->isDirty = false;
     }
@@ -100,4 +104,15 @@ abstract class AbstractEntity implements JsonSerializable
         
         return $reflection->getProperty($key)->isProtected();
     }
+    
+    public function generateSlug($suffix = '')
+    {
+        if (!is_string($this->getSlugData())) {
+            return false;
+        }
+        $this->slug = 
+            $this->slugifier->slugify($this->getSlugData() . ' ' . $suffix);
+    }
+    
+    public function getSlugData(){}
 }
