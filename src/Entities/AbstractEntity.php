@@ -18,7 +18,7 @@ abstract class AbstractEntity implements JsonSerializable
     /**
      * Construct
      */
-    public function __construct($data = [], Slugifier $slugifier)
+    public function __construct($data, Slugifier $slugifier)
     {
         $this->slugifier = $slugifier;
         $this->setData($data);
@@ -110,9 +110,12 @@ abstract class AbstractEntity implements JsonSerializable
         if (!is_string($this->getSlugData())) {
             return false;
         }
-        $this->slug = 
+        $this->slug =
             $this->slugifier->slugify($this->getSlugData() . ' ' . $suffix);
     }
     
-    public function getSlugData(){}
+    public function getSlugData()
+    {
+        
+    }
 }
