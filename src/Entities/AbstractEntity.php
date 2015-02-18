@@ -111,8 +111,7 @@ abstract class AbstractEntity implements JsonSerializable
         if (!is_string($this->getSlugData())) {
             return false;
         }
-        $this->slug =
-            $this->slugifier->slugify($this->getSlugData() . ' ' . $suffix);
+        return $this->slugifier->slugify($this->getSlugData() . ' ' . $suffix);
     }
     
     public function getSlugData()
