@@ -47,6 +47,7 @@ abstract class AbstractEntity implements JsonSerializable
     {
         $properties = get_object_vars($this);
         unset($properties['isDirty']);
+        unset($properties['slugifier']);
         
         return $properties;
     }

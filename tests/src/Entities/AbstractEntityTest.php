@@ -3,12 +3,14 @@
 namespace Tarcha\WebKernel\Tests\Entities;
 
 use Tarcha\WebKernel\Tests\Test;
+use Slug\Slugifier;
 
 class AbstractEntityTest extends Test
 {
     public function getPayload($args)
     {
-        return new MockAbstractEntity($args);
+        $slugifier = new Slugifier();
+        return new MockAbstractEntity($args, $slugifier);
     }
 
     public function testShouldNotBeDirtyOnInstanciation()
@@ -47,20 +49,20 @@ class AbstractEntityTest extends Test
     {
         $e = $this->getPayload(['data' => 'foo']);
 
-        $this->assertEquals($e->getData(), ['data' => 'foo']);
+        $this->assertEquals($e->getData(), ['data' => 'foo', 'slug' => null]);
     }
 
     public function testSetOnlyPredefinedVariables()
     {
         $e = $this->getPayload(['data' => 'foo', 'bar' => 'baz']);
 
-        $this->assertEquals($e->getData(), ['data' => 'foo']);
+        $this->assertEquals($e->getData(), ['data' => 'foo', 'slug' => null]);
     }
 
     public function testJsonSerialize()
     {
         $e = $this->getPayload(['data' => 'foo']);
 
-        $this->assertEquals(json_encode($e), json_encode(['data' => 'foo']));
+        $this->assertEquals(json_encode($e), json_encode(['data' => 'foo', 'slug' => null]));
     }
 }
