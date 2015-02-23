@@ -11,7 +11,8 @@
         "aura/web": "~2.0",
         "aura/filter": "~2.0@dev",
         "swaggerdocs": "dev-master",
-        "kevinlebrun/slug.php": "1.*"
+        "kevinlebrun/slug.php": "1.*",
+        "ext-mbstring": "*"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "1.*",
