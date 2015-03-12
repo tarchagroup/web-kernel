@@ -91,6 +91,20 @@ abstract class AbstractResponder extends AuraAbstractResponder
         $this->response->content->set(json_encode($msg));
         $this->response->content->setType('application/json');
     }
+    
+    protected function unAuthorized()
+    {
+        $this->response->status->set('403');
+        $this->response->content->set('unAuthorized');
+        return $this->response;
+    }
+    
+    protected function unAuthenticated()
+    {
+        $this->response->status->set('401');
+        $this->response->content->set('unAuthenticated');
+        return $this->response;
+    }
 
     // demograph
     protected function json($code = 200)
