@@ -17,14 +17,16 @@ abstract class AbstractResponder extends AuraAbstractResponder
     protected $payload_methods = [];
 
     private $kernel_payload_methods = [
-        'Tarcha\WebKernel\Payloads\NoContent'     => 'noContent',
-        'Tarcha\WebKernel\Payloads\Error'         => 'error',
-        'Tarcha\WebKernel\Payloads\NotFound'      => 'notFound',
-        'Tarcha\WebKernel\Payloads\NotRecognized' => 'notRecognized',
-        'Tarcha\WebKernel\Payloads\Success'       => 'success',
-        'Tarcha\WebKernel\Payloads\AlreadyExists' => 'alreadyExists',
-        'Tarcha\WebKernel\Payloads\Invalid'       => 'invalid',
-        'Tarcha\WebKernel\Payloads\Created'       => 'created'
+        'Tarcha\WebKernel\Payloads\NoContent'       => 'noContent',
+        'Tarcha\WebKernel\Payloads\Error'           => 'error',
+        'Tarcha\WebKernel\Payloads\NotFound'        => 'notFound',
+        'Tarcha\WebKernel\Payloads\NotRecognized'   => 'notRecognized',
+        'Tarcha\WebKernel\Payloads\Success'         => 'success',
+        'Tarcha\WebKernel\Payloads\AlreadyExists'   => 'alreadyExists',
+        'Tarcha\WebKernel\Payloads\Invalid'         => 'invalid',
+        'Tarcha\WebKernel\Payloads\Created'         => 'created',
+        'Tarcha\WebKernel\Payloads\UnAuthenticated' => 'unAuthenticated',
+        'Tarcha\WebKernel\Payloads\UnAuthorized'    => 'unAuthorized'
     ];
 
 
