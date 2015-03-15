@@ -17,14 +17,16 @@ abstract class AbstractResponder extends AuraAbstractResponder
     protected $payload_methods = [];
 
     private $kernel_payload_methods = [
-        'Tarcha\WebKernel\Payloads\NoContent'     => 'noContent',
-        'Tarcha\WebKernel\Payloads\Error'         => 'error',
-        'Tarcha\WebKernel\Payloads\NotFound'      => 'notFound',
-        'Tarcha\WebKernel\Payloads\NotRecognized' => 'notRecognized',
-        'Tarcha\WebKernel\Payloads\Success'       => 'success',
-        'Tarcha\WebKernel\Payloads\AlreadyExists' => 'alreadyExists',
-        'Tarcha\WebKernel\Payloads\Invalid'       => 'invalid',
-        'Tarcha\WebKernel\Payloads\Created'       => 'created'
+        'Tarcha\WebKernel\Payloads\NoContent'       => 'noContent',
+        'Tarcha\WebKernel\Payloads\Error'           => 'error',
+        'Tarcha\WebKernel\Payloads\NotFound'        => 'notFound',
+        'Tarcha\WebKernel\Payloads\NotRecognized'   => 'notRecognized',
+        'Tarcha\WebKernel\Payloads\Success'         => 'success',
+        'Tarcha\WebKernel\Payloads\AlreadyExists'   => 'alreadyExists',
+        'Tarcha\WebKernel\Payloads\Invalid'         => 'invalid',
+        'Tarcha\WebKernel\Payloads\Created'         => 'created',
+        'Tarcha\WebKernel\Payloads\Unauthenticated' => 'unauthenticated',
+        'Tarcha\WebKernel\Payloads\Unauthorized'    => 'unauthorized'
     ];
 
 
@@ -90,6 +92,20 @@ abstract class AbstractResponder extends AuraAbstractResponder
         $this->response->status->set('400');
         $this->response->content->set(json_encode($msg));
         $this->response->content->setType('application/json');
+    }
+    
+    protected function unauthorized()
+    {
+        $this->response->status->set('403');
+        $this->response->content->set('unauthorized');
+        return $this->response;
+    }
+    
+    protected function unauthenticated()
+    {
+        $this->response->status->set('401');
+        $this->response->content->set('unauthenticated');
+        return $this->response;
     }
 
     // demograph

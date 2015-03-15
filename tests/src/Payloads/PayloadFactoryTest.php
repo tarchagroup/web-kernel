@@ -67,4 +67,14 @@ class PayloadFactoryTest extends Test
     {
         $this->assertPayload('Success');
     }
+    
+    public function testUnauthorized()
+    {
+        $this->assertPayload('Unauthorized');
+    }
+    
+    public function testUnauthenticated()
+    {
+        $this->assertPayload('Unauthenticated');
+    }
 }

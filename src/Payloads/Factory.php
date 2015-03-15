@@ -55,4 +55,14 @@ class Factory
     {
         return $this->di->newInstance('Tarcha\WebKernel\Payloads\Invalid', [$data]);
     }
+    
+    public function unauthorized($data)
+    {
+        return $this->di->newInstance('Tarcha\WebKernel\Payloads\Unauthorized', [$data]);
+    }
+    
+    public function unauthenticated($data)
+    {
+        return $this->di->newInstance('Tarcha\WebKernel\Payloads\Unauthenticated', [$data]);
+    }
 }
