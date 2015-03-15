@@ -25,8 +25,8 @@ abstract class AbstractResponder extends AuraAbstractResponder
         'Tarcha\WebKernel\Payloads\AlreadyExists'   => 'alreadyExists',
         'Tarcha\WebKernel\Payloads\Invalid'         => 'invalid',
         'Tarcha\WebKernel\Payloads\Created'         => 'created',
-        'Tarcha\WebKernel\Payloads\UnAuthenticated' => 'unAuthenticated',
-        'Tarcha\WebKernel\Payloads\UnAuthorized'    => 'unAuthorized'
+        'Tarcha\WebKernel\Payloads\Unauthenticated' => 'unauthenticated',
+        'Tarcha\WebKernel\Payloads\Unauthorized'    => 'unauthorized'
     ];
 
 
@@ -94,17 +94,17 @@ abstract class AbstractResponder extends AuraAbstractResponder
         $this->response->content->setType('application/json');
     }
     
-    protected function unAuthorized()
+    protected function unauthorized()
     {
         $this->response->status->set('403');
-        $this->response->content->set('unAuthorized');
+        $this->response->content->set('unauthorized');
         return $this->response;
     }
     
-    protected function unAuthenticated()
+    protected function unauthenticated()
     {
         $this->response->status->set('401');
-        $this->response->content->set('unAuthenticated');
+        $this->response->content->set('unauthenticated');
         return $this->response;
     }
 

@@ -2,7 +2,7 @@
 
 namespace Tarcha\WebKernel\Payloads;
 
-class UnAuthorized extends AbstractPayload
+class Unauthenticated extends AbstractPayload
 {
     
 }
