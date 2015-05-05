@@ -3,7 +3,7 @@
 namespace Tarcha\WebKernel\Tests\Entities;
 
 use Tarcha\WebKernel\Tests\Test;
-use Slug\Slugifier;
+use \Slugifier;
 
 class AbstractEntityTest extends Test
 {
