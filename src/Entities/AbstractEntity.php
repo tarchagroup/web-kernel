@@ -4,7 +4,7 @@ namespace Tarcha\WebKernel\Entities;
 
 use \JsonSerializable;
 use \ReflectionClass;
-use Slug\Slugifier;
+use \Slugifier;
 
 abstract class AbstractEntity implements JsonSerializable
 {

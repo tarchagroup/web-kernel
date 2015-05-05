@@ -11,7 +11,7 @@
         "aura/web": "~2.0",
         "aura/filter": "~2.0@dev",
         "swaggerdocs": "dev-master",
-        "kevinlebrun/slug.php": "1.*",
+        "keyvanakbary/slugifier": "dev-master",
         "ext-mbstring": "*"
     },
     "require-dev": {
