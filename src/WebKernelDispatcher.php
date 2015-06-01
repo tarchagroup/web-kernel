@@ -108,6 +108,11 @@ class WebKernelDispatcher
             $what = $action;
         }
         $this->logger->info(__CLASS__ . ' dispatching '  . $what);
+        
+        // https://docs.newrelic.com/docs/agents/php-agent/features/php-frameworks-integrating-support-new-relic#dev
+        if (extension_loaded('newrelic')) {
+            newrelic_name_transaction($what);
+        }
     }
 
     /**
