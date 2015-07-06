@@ -2,29 +2,29 @@
 
 namespace Tarcha\WebKernel\Filters;
 
-use Aura\Filter\FilterFactory;
+use Aura\Filter\FilterContainer;
 
 class AbstractFilter
 {
-    public function __construct(FilterFactory $factory)
+    public function __construct(FilterContainer $factory)
     {
         $this->factory = $factory;
         $this->filter = $factory->newFilter();
     }
-    
+
     public function addId($field)
     {
         $this->filter
             ->validate($field)
             ->is('int')
             ->asSoftRule();
-            
+
         $this->filter
             ->validate($field)
             ->isNot('max', 0)
             ->asSoftRule();
     }
-    
+
     public function addBlank($field)
     {
         $this->filter
@@ -32,7 +32,7 @@ class AbstractFilter
             ->is('blank')
             ->asSoftRule();
     }
-    
+
     public function addString($field)
     {
         $this->filter
@@ -40,7 +40,7 @@ class AbstractFilter
             ->is('string')
             ->asSoftRule();
     }
-    
+
     public function addInt($field)
     {
         $this->filter
@@ -48,7 +48,7 @@ class AbstractFilter
             ->is('int')
             ->asSoftRule();
     }
-    
+
     public function addFloat($field)
     {
         $this->filter
@@ -56,7 +56,7 @@ class AbstractFilter
             ->is('float')
             ->asSoftRule();
     }
-    
+
     public function addUuid($field)
     {
         $this->filter
@@ -64,31 +64,31 @@ class AbstractFilter
             ->is('uuidHexonly')
             ->asSoftRule();
     }
-    
+
     public function addTime($field)
     {
         $this->filter
             ->validate($field)
             ->is('int')
             ->asSoftRule();
-            
+
         $this->filter
             ->validate($field)
             ->isNot('max', 0)
             ->asSoftRule();
     }
-    
+
     public function validate($values)
     {
         return $this->filter->apply($values);
     }
-    
+
     public function newFilter()
     {
         $this->filter = $this->factory->newFilter();
         return $this->filter;
     }
-    
+
     public function messages()
     {
         return $this->filter->getMessages();
