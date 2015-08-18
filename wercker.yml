@@ -32,5 +32,5 @@ build:
           name: phpunit
           code: ./tests/phpunit.sh
     after-steps:
-        - wantedly/pretty-slack-notify:
-            webhook_url:  $SLACK_WEBHOOK_URL
+        - slack-notifier:
+            url: $SLACK_WEBHOOK_URL

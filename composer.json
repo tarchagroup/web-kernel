@@ -46,5 +46,10 @@
     },
     "scripts": {
         "test": "tests/phpunit.sh"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "optimize-autoloader": true,
+        "process-timeout": 30
     }
 }
