@@ -17,3 +17,13 @@ build:
     after-steps:
         - slack-notifier:
             url: $SLACK_WEBHOOK_URL
+deploy:
+    steps:
+        - mbrevda/wercker-triggerbuild:
+            token: $WERCKER_TOKEN
+            application_id: 555988f68b2aa95304017bc7
+            message: |
+                Auto-build by $WERCKER_GIT_REPOSITORY (build id: $WERCKER_DEPLOY_ID)
+    after-steps:
+        - slack-notifier:
+            url: $SLACK_WEBHOOK_URL
