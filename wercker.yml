@@ -1,20 +1,9 @@
 box: wercker/php
 build:
     steps:
-      - script:
-          name: echo php information
-          code: |
-            echo "php version $(php --version) running"
-            echo "from location $(which php)"
-            composer --version
       - add-ssh-key:
           keyname: TARCHABOT_KEY
-      - script:
-          name: install composer dependencies
-          code: >
-            mkdir -p $WERCKER_CACHE_DIR/.composer/cache;
-            composer config cache-dir $WERCKER_CACHE_DIR/.composer/cache;
-            composer install --no-interaction --prefer-dist --optimize-autoloader
+      - mbrevda/composer-install
       - script:
           name: phplint
           code: ./vendor/bin/parallel-lint --exclude vendor .

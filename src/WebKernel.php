@@ -10,7 +10,7 @@
 */
 namespace Tarcha\WebKernel;
 
-use Aura\Web_Kernel\WebKernelRouter;
+use Tarcha\WebKernel\WebKernelRouter;
 use Aura\Web\ResponseSender;
 use Tarcha\WebKernel\WebKernelDispatcher;
 
