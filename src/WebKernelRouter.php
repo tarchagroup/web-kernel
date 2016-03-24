@@ -23,5 +23,4 @@ class WebKernelRouter extends AuraWebKernelRouter
         //$this->logRoutesTried();
         return $route;
     }
-
 }
