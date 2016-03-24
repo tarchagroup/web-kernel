@@ -9,12 +9,6 @@ build:
           code: ./vendor/bin/parallel-lint --exclude vendor .
       - mbrevda/phpcs:
             directory: src/
-      - script:
-          name: json lint
-          code: >
-            find . -name '*.json' ! -path '*vendor*' 
-            -print0 | xargs -0 -I % 
-            sh -c 'echo -n %... ; vendor/bin/jsonlint %'
       - mbrevda/phpcs:
           directory: src/
       - script:
