@@ -14,13 +14,19 @@ class Common extends Config
         $di->types['Aura\Router\Router'] = $di->lazyGet('aura/web-kernel:router');
         $di->types['Aura\Dispatcher\Dispatcher'] = $di->lazyGet('aura/web-kernel:dispatcher');
 
-        // Aura\Web_Kernel\WebKernelRouter
-        $di->params['Tarcha\WebKernel\WebKernelRouter']['logger']
-            = $di->lazyGet('aura/project-kernel:logger');
+        // Tarcha\WebKernel\WebKernelRouter
+        $di->params['Tarcha\WebKernel\WebKernelRouter'] = array(
+            'request' => $di->lazyGet('aura/web-kernel:request'),
+            'router' => $di->lazyGet('aura/web-kernel:router'),
+            'logger' => $di->lazyGet('tarcha/project-kernel:logger'),
+        );
 
-        // Aura\Web_Kernel\WebKernelDispatcher
-        $di->params['Tarcha\WebKernel\WebKernelDispatcher']['logger']
-            = $di->lazyGet('aura/project-kernel:logger');
+        // Tarcha\WebKernel\WebKernelDispatcher
+        $di->params['Tarcha\WebKernel\WebKernelDispatcher'] = array(
+            'request' => $di->lazyGet('aura/web-kernel:request'),
+            'dispatcher' => $di->lazyGet('aura/web-kernel:dispatcher'),
+            'logger' => $di->lazyGet('tarcha/project-kernel:logger'),
+        );
 
     }
 
